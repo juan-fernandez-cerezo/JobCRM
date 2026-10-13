@@ -8,7 +8,6 @@ import JobDetails from './components/JobDetails';
 import ProfileModal from './components/ProfileModal';
 import Auth from './components/Auth';
 import { useJobs } from './hooks/useJobs';
-import './App.css';
 
 export default function App() {
   const {
