@@ -6,8 +6,6 @@
 [![Vite](https://img.shields.io/badge/Vite-8.0-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
-[![Kubernetes](https://img.shields.io/badge/Kubernetes-K8s-326CE5?logo=kubernetes&logoColor=white)](https://kubernetes.io/)
 
 ---
 
@@ -19,7 +17,6 @@
 - [Project Architecture](#-project-architecture)
 - [Quick Start](#-quick-start)
 - [Database & Backend Setup](#-database--backend-setup-supabase)
-- [Docker & Kubernetes Deployment](#-docker--kubernetes-deployment)
 - [Available Scripts](#-available-scripts)
 - [Documentation & Guides](#-documentation--guides)
 
@@ -90,8 +87,6 @@ Navigating job hunts across multiple job boards, recruiters, and interview stage
 | **Icons** | [Lucide React](https://lucide.dev/) | Clean, accessible vector icons |
 | **Spreadsheets** | [SheetJS (xlsx)](https://docs.sheetjs.com/) | Client-side Excel export generation |
 | **Backend / DB** | [Supabase](https://supabase.com/) | Hosted PostgreSQL, Row-Level Security, Auth & Triggers |
-| **Containers** | [Docker](https://www.docker.com/) | Multi-stage production build with Nginx Alpine |
-| **Orchestration** | [Kubernetes](https://kubernetes.io/) | Production deployment and LoadBalancer service manifests |
 
 ---
 
@@ -100,14 +95,8 @@ Navigating job hunts across multiple job boards, recruiters, and interview stage
 ```plaintext
 JobCRM/
 ├── .env.example              # Environment variables template
-├── Dockerfile                # Multi-stage production container build
-├── nginx.conf                # Nginx SPA reverse-proxy & gzip configuration
 ├── package.json              # Project dependencies and npm scripts
 ├── vite.config.js            # Vite build configuration
-│
-├── k8s/                      # Kubernetes deployment manifests
-│   ├── deployment.yaml       # Deployment with 2 replicas, probes, and resource limits
-│   └── service.yaml          # Public LoadBalancer service
 │
 ├── supabase/
 │   └── schema.sql            # Full SQL DDL schema (Tables, RLS policies, triggers)
@@ -117,7 +106,6 @@ JobCRM/
 └── src/
     ├── main.jsx              # Application entry point
     ├── App.jsx               # Main application container, router, and modal coordinator
-    ├── App.css               # Global application styles
     ├── index.css             # Tailwind CSS imports & theme definitions
     │
     ├── components/
@@ -150,7 +138,7 @@ JobCRM/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/JobCRM.git
+git clone https://github.com/juan-fernandez-cerezo/JobCRM.git
 cd JobCRM
 ```
 
@@ -197,33 +185,6 @@ If you wish to use PostgreSQL cloud persistence:
 
 ---
 
-## 🐳 Docker & Kubernetes Deployment
-
-### Local Docker Build
-Build and run the containerized application locally with Nginx:
-
-```bash
-# Build the Docker image
-docker build -t jobtracker-pro:latest .
-
-# Run container on port 8080
-docker run -d -p 8080:80 jobtracker-pro:latest
-```
-Access the application at [http://localhost:8080](http://localhost:8080).
-
-### Kubernetes / AWS EKS
-Manifests for Kubernetes are provided in the [`k8s/`](./k8s) directory:
-
-```bash
-# Apply deployment and load balancer service
-kubectl apply -f k8s/deployment.yaml
-kubectl apply -f k8s/service.yaml
-```
-
-For complete instructions on building with **AWS ECR** and deploying to **Amazon EKS**, see [`AWS_DEPLOYMENT.md`](./AWS_DEPLOYMENT.md).
-
----
-
 ## 📜 Available Scripts
 
 In the project root, you can run:
@@ -240,7 +201,6 @@ In the project root, you can run:
 ## 📚 Documentation & Guides
 
 - 📘 [Supabase Connection Guide (`SUPABASE_SETUP.md`)](./SUPABASE_SETUP.md) - Detailed guide for cloud database initialization and RLS setup.
-- ☁️ [AWS & Kubernetes Deployment Guide (`AWS_DEPLOYMENT.md`)](./AWS_DEPLOYMENT.md) - Step-by-step guide for deploying on Amazon ECR & Amazon EKS.
 
 ---
 
